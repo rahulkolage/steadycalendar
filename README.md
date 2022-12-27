@@ -56,3 +56,11 @@ samples, guidance on mobile development, and a full API reference.
 ### Add packages
 -   Date time converter library, used for conversion of date to string and vice versa.
 -   flutter pub add intl
+
+-   https://supabase.com/blog/supabase-flutter-sdk-1-developer-preview#no-more-execute-to-get-the-data
+
+
+#### Third party library issues, versions
+- intl: ^0.18.0, downgraded to 0.17.0 as following version of table_calendar won't work.
+- intl: ^0.17.0
+- table_calendar: ^3.0.8

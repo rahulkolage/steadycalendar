@@ -15,26 +15,28 @@ class CalPager extends StatelessWidget {
         body: Stack(
       children: [
         PageView(
-            children: [
-          'adventures-begin-mug@3x.png',
-          'apple-and-juice@3x.png',
-          'apples-on-tree@3x.png'
-        ]
-                // .map((name) => Image.network(
-                //     "https://${baseBackgroundImageURL(dotenv.env['SUPABASE_PROJECT_ID']!)}/$name"))
-                // .toList(),
+            children: [],
+            // above aaray will be fileld by data using Calendar View
+        // [
+        //   'adventures-begin-mug@3x.png',
+        //   'apple-and-juice@3x.png',
+        //   'apples-on-tree@3x.png'
+        // ]
+        //         // .map((name) => Image.network(
+        //         //     "https://${baseBackgroundImageURL(dotenv.env['SUPABASE_PROJECT_ID']!)}/$name"))
+        //         // .toList(),
 
-                .map((name) => CachedNetworkImage(
-                      imageUrl:
-                          "${baseBackgroundImageURL(dotenv.env['SUPABASE_PROJECT_ID']!)}/$name",
-                      fit: BoxFit.cover,
-                      alignment: Alignment.center,
-                      placeholder: (context, url) =>
-                          const CircularProgressIndicator(),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
-                    ))
-                .toList()),
+        //         .map((name) => CachedNetworkImage(
+        //               imageUrl:
+        //                   "${baseBackgroundImageURL(dotenv.env['SUPABASE_PROJECT_ID']!)}/$name",
+        //               fit: BoxFit.cover,
+        //               alignment: Alignment.center,
+        //               placeholder: (context, url) =>
+        //                   const CircularProgressIndicator(),
+        //               errorWidget: (context, url, error) =>
+        //                   const Icon(Icons.error),
+        //             ))
+        //         .toList()),
         (Supabase.instance.client.auth.currentUser != null
             ? Center(
                 child: Column(

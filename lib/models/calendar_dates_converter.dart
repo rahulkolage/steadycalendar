@@ -16,7 +16,9 @@ class CalendarDatesConverter
 
     // we'll receive a list of Map<String, dynamic> that contains only one map
     // entry
-    json.forEach((value) {
+    // Avoid using `forEach` with a function literal.
+    // json.forEach((value) {
+    for(final value in json) {
       final dtMap = value as Map<String, dynamic>;
       if (dtMap.values.isNotEmpty) {
         final dateString = dtMap.values.first;
@@ -24,7 +26,7 @@ class CalendarDatesConverter
 
         datesHash[date.hashCode] = date;
       }
-    });
+    };
 
     return datesHash;
   }

@@ -53,7 +53,7 @@ class Calendar {
 
   // factory helper function for json to string and vice versa conversion
   // $CalendarFromJson will be generated automatically using json serializer
-  
+
   // this will be used when data comes from api as string
   factory Calendar.fromJson(Map<String, dynamic> json) =>
       _$CalendarFromJson(json);
