@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
+import 'package:provider/provider.dart' as provider;
+import '../../providers/session_provider.dart';
 import '../cal_pager/cal_pager.dart';
 import '../intro/intro.dart';
 
@@ -31,6 +32,10 @@ class _SplashState extends State<Splash> {
       final AuthChangeEvent event = data.event;
       switch (event) {
         case AuthChangeEvent.signedIn:
+          // For Provider instance below we have to use alias as "Provider" is used by another package "gotrue"
+          provider.Provider.of<SessionProvider>(context, listen: false)
+        .refreshCalendars();
+        
           Navigator.of(context).pushNamedAndRemoveUntil(
               CalPager.routeName, ModalRoute.withName(Splash.routeName));
           break;

@@ -36,6 +36,7 @@ samples, guidance on mobile development, and a full API reference.
 -   https://www.sandromaglione.com/techblog/flutter-supabase-authentication-complete-tutorial
 -   https://www.nequalsonelifestyle.com/2022/08/10/supabase-flutter-quickstart-new-api/
 -   https://www.section.io/engineering-education/using-supabase-as-an-alternative-to-firebase-in-flutter/#step-2---adding-dependencies
+-   Supabase Authentication & Realtime Database with Flutter https://www.youtube.com/watch?v=UTSSYPOd5A0
 
 
 ### BuildContext can also be represented by "_"
