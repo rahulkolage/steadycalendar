@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './app.dart';
+import '/screens/splash/splash_state.dart';
 
 
 void main() async {  
@@ -20,5 +21,5 @@ void main() async {
 
 
   // moved above code in app.dart
-  runAppWithOptions(envFileName: '.env');       
+  runAppWithOptions(envFileName: '.env', splashState: SplashState());       
 }

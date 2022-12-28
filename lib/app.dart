@@ -11,7 +11,9 @@ import 'screens/login_options/login_options.dart';
 import 'screens/splash/splash.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  final State<Splash> splashState;
+
+  const App(this.splashState, {super.key});
   // const App({Key? key}): super(key: key);
 
   @override
@@ -22,7 +24,7 @@ class App extends StatelessWidget {
             .routeName, // named route, easy to refer // TODO: Splash.routeName
         routes: {
           Intro.routeName: (context) => const Intro(),
-          Splash.routeName: (context) => const Splash(),
+          Splash.routeName: (context) => Splash(splashState),
           LoginOptions.routeName: (context) => const LoginOptions(),
           CalPager.routeName: (context) => const CalPager(),
         });
@@ -31,7 +33,8 @@ class App extends StatelessWidget {
 
 Future<void> runAppWithOptions(
     {String envFileName = '.env',
-    CalRepoInterface calendarRepository = const CalendarRepository()}) async {
+    CalRepoInterface calendarRepository = const CalendarRepository(),
+    required State<Splash> splashState}) async {
   // CalRepoInterface calendarRespository = const CalendarRepository()
   // This interface instacnce to which we passed actual CalendarRepository instance,
   // we can pass mock or real repo instance
@@ -48,5 +51,5 @@ Future<void> runAppWithOptions(
 
   runApp(ChangeNotifierProvider(
       create: (context) => SessionProvider(calendarRepository),
-      child: const App()));
+      child: App(splashState)));
 }

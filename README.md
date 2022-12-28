@@ -65,3 +65,10 @@ samples, guidance on mobile development, and a full API reference.
 - intl: ^0.18.0, downgraded to 0.17.0 as following version of table_calendar won't work.
 - intl: ^0.17.0
 - table_calendar: ^3.0.8
+
+
+### Testing
+-   Tests can be run via vscode or command line
+-   Command line, using integtraion_test
+-   flutter test NameOfDirectory
+    e.g. flutter test integtraion_test
