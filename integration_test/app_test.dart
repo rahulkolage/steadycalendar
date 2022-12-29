@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:steadycalendar/app.dart';
-// import 'package:steadycalendar/screens/cal_edit/cal_edit.dart';
 import 'package:steadycalendar/screens/cal_pager/cal_pager.dart';
 import 'package:steadycalendar/screens/call_edit/cal_edit.dart';
 import 'mock_calendar_repository.dart';
