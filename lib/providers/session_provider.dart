@@ -16,4 +16,20 @@ class SessionProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  saveCalendar(Calendar cal) async {
+    return calRepo.saveCalendar(cal);
+  }
+
+  deleteCalendar(Calendar cal) async {
+    return calRepo.deleteCalendar(cal);
+  }
+
+  saveDate(Calendar cal, DateTime date) async {
+    return calRepo.saveDate(cal, date);
+  }
+
+  deleteDate(Calendar cal, DateTime date) async {
+    return deleteDate(cal, date);
+  }
 }

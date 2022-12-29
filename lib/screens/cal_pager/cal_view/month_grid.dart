@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import '../../../util/alert.dart';
 import '/models/calendar.dart';
 import '/util/colors.dart';
 import '/config/styles.dart';
@@ -11,8 +12,11 @@ final lastDay = DateTime(now.year, now.month, now.day);
 
 class MonthGrid extends StatefulWidget {
   final Calendar cal;
+  final Function(BuildContext, Calendar, DateTime) dateSelected;
+  final Function(BuildContext, Calendar, DateTime) dateDeselected;
 
-  const MonthGrid(this.cal, {super.key});
+
+  const MonthGrid(this.cal, this.dateSelected, this.dateDeselected, {super.key});
 
   @override
   State<MonthGrid> createState() => _MonthGridState();
@@ -59,9 +63,32 @@ class _MonthGridState extends State<MonthGrid> {
       ),
       selectedDayPredicate: (day) => (widget.cal.dates != null &&
           widget.cal.dates!.containsKey(day.hashCode)),
+          onDaySelected: (selectedDay, focusedDay) =>
+          _onDaySelected(selectedDay, focusedDay),
     );
   }
 
+  _onDaySelected(selectedDay, focusedDay) {
+    // alert and bail if a future date is selected
+    // NOTE remember, TableCalendar always works with UTC values, so compare
+    // them against only other UTC values
+    if (selectedDay.isAfter(DateTime.now().toUtc())) {
+      showAlert(context, '', 'Cannot select dates in the future.');
+      return;
+    }
+
+    // either remove or add date
+    setState(() {
+      if (widget.cal.dates!.containsKey(selectedDay.hashCode)) {
+        widget.cal.dates!.remove(selectedDay.hashCode);
+        widget.dateDeselected(context, widget.cal, selectedDay);
+      } else {
+        widget.cal.dates![selectedDay.hashCode] = selectedDay;
+        widget.dateSelected(context, widget.cal, selectedDay);
+      }
+    });
+  }
+  
   TextStyle _defaultTextStyle({Color? color}) {
     return TextStyle(
         fontFamily: Styles.secondaryFontRegular,

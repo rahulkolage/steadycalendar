@@ -4,6 +4,7 @@ import 'package:integration_test/integration_test.dart';
 import 'package:steadycalendar/app.dart';
 // import 'package:steadycalendar/screens/cal_edit/cal_edit.dart';
 import 'package:steadycalendar/screens/cal_pager/cal_pager.dart';
+import 'package:steadycalendar/screens/call_edit/cal_edit.dart';
 import 'mock_calendar_repository.dart';
 import 'mock_splash_state.dart';
 
@@ -35,7 +36,26 @@ void main() {
       await splashState.login();
       await tester.pumpAndSettle();
 
+      // ensure first cal appears with name at the top
+      expect(find.text(calRepo.cals.first.name), findsWidgets);
+      await tester.pumpAndSettle();
 
+      // navigate to cal list screen
+      await tester.tap(find.byKey(const ValueKey(CalPager.calListIconKey)));
+      await tester.pumpAndSettle();
+
+      // navigate to cal edit screen
+      await tester.tap(find.byKey(ValueKey("cal-${calRepo.cals.first.id}")));
+      await tester.pumpAndSettle();
+
+            // fill out form fields
+      const newName = 'updated';
+
+      // update name field
+      await tester.tap(find.byKey(const ValueKey(CalEdit.nameKey)));
+      await tester.pumpAndSettle();
+
+      
     });
   });
 }

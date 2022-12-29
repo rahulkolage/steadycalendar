@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../../providers/session_provider.dart';
+import '../../../util/alert.dart';
 import '/models/calendar.dart';
 import '/config/styles.dart';
 import 'background.dart';
@@ -39,8 +42,22 @@ class CalView extends StatelessWidget {
                         fontSize: Styles.primaryHeaderFontSize),
                   ),
                 ),
-                MonthGrid(cal),
+                MonthGrid(cal, _dateSelected, _dateDeselected),
               ])),
     ]);
+  }
+
+  _dateSelected(BuildContext context, Calendar cal, DateTime date) {
+    final session = Provider.of<SessionProvider>(context, listen: false);
+    session
+        .saveDate(cal, date)
+        .catchError((e) => showAlert(context, '', e.toString()));
+  }
+
+  _dateDeselected(BuildContext context, Calendar cal, DateTime date) {
+    final session = Provider.of<SessionProvider>(context, listen: false);
+    session
+        .deleteDate(cal, date)
+        .catchError((e) => showAlert(context, '', e.toString()));
   }
 }

@@ -1,4 +1,3 @@
-
 import 'package:steadycalendar/config/constants.dart';
 import 'package:steadycalendar/models/calendar.dart';
 import 'package:steadycalendar/repositories/cal_repo_interface.dart';
@@ -20,5 +19,25 @@ class MockCalendarRepository extends CalRepoInterface {
   @override
   Future<List<Calendar>> refreshCalendars() async {
     return cals;
+  }
+
+  @override
+  saveCalendar(Calendar cal) async {
+    return;
+  }
+
+  @override
+  deleteCalendar(Calendar cal) async {
+    return;
+  }
+
+  @override
+  saveDate(Calendar cal, DateTime date) async {
+    return;
+  }
+
+  @override
+  deleteDate(Calendar cal, DateTime date) async {
+    return;
   }
 }

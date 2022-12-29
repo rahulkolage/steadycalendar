@@ -1,5 +1,9 @@
 import '../models/calendar_color.dart';
 
+String appWebsite = 'https://steadycalendar.com';
+
+String appSupportEmail = 'hello@steadycalendar.com?subject=Feedback';
+
 String baseBackgroundImageURL(String supabaseProjectID) =>
     "https://$supabaseProjectID.supabase.co/storage/v1/object/public/backgrounds";
 

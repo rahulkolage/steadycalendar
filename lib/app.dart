@@ -5,9 +5,14 @@ import 'package:provider/provider.dart';
 import 'providers/session_provider.dart';
 import 'repositories/cal_repo.dart';
 import 'repositories/cal_repo_interface.dart';
+import 'screens/cal_list/cal_list.dart';
 import 'screens/cal_pager/cal_pager.dart';
+import 'screens/call_edit/cal_bg_picker.dart';
+import 'screens/call_edit/cal_color_picker.dart';
+import 'screens/call_edit/cal_edit.dart';
 import 'screens/intro/intro.dart';
 import 'screens/login_options/login_options.dart';
+import 'screens/menu/menu.dart';
 import 'screens/splash/splash.dart';
 
 class App extends StatelessWidget {
@@ -23,10 +28,15 @@ class App extends StatelessWidget {
         initialRoute: Intro
             .routeName, // named route, easy to refer // TODO: Splash.routeName
         routes: {
-          Intro.routeName: (context) => const Intro(),
           Splash.routeName: (context) => Splash(splashState),
-          LoginOptions.routeName: (context) => const LoginOptions(),
           CalPager.routeName: (context) => const CalPager(),
+          Intro.routeName: (context) => const Intro(),
+          LoginOptions.routeName: (context) => const LoginOptions(),
+          CalList.routeName: (context) => const CalList(),
+          CalEdit.routeName: (context) => const CalEdit(),
+          CalBGPicker.routeName: (context) => const CalBGPicker(),
+          CalColorPicker.routeName: (context) => const CalColorPicker(),
+          Menu.routeName: (context) => const Menu()
         });
   }
 }
